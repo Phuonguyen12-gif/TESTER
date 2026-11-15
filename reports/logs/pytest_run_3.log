@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.0, pytest-9.2.0, pluggy-1.7.0 -- /Users/pickapu/Documents/PyCharmMiscProject/TESTER/.venv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.14.0', 'Platform': 'macOS-27.0.1-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'html': '4.2.0'}}
+rootdir: /Users/pickapu/Documents/PyCharmMiscProject/TESTER/automation
+configfile: pytest.ini
+testpaths: tests
+plugins: metadata-3.1.1, html-4.2.0
+collecting ... collected 8 items
+
+tests/test_cart.py::TestCart::test_TC03_add_to_cart PASSED               [ 12%]
+tests/test_cart.py::TestCart::test_TC04_remove_from_cart PASSED          [ 25%]
+tests/test_cart.py::TestCart::test_TC06_logout PASSED                    [ 37%]
+tests/test_checkout.py::TestCheckout::test_TC05_checkout_success PASSED  [ 50%]
+tests/test_checkout.py::TestCheckout::test_TC08_checkout_missing_info PASSED [ 62%]
+tests/test_login.py::TestLogin::test_TC01_valid_login PASSED             [ 75%]
+tests/test_login.py::TestLogin::test_TC02_wrong_password PASSED          [ 87%]
+tests/test_login.py::TestLogin::test_TC07_locked_out_user PASSED         [100%]
+
+- Generated html report: file:///Users/pickapu/Documents/PyCharmMiscProject/TESTER/automation/../reports/test_results/report.html -
+============================== 8 passed in 11.99s ==============================
