@@ -4,16 +4,16 @@
 
 ## Cấu trúc
 
-- `automation/` — Bộ test Selenium + pytest trên https://www.saucedemo.com/
-  (xem `automation/README.md` để cài đặt & chạy)
+- `selenium_demo/` — Bộ test Selenium + pytest (kiến trúc Page Object Model)
+  trên https://www.saucedemo.com/ — xem `selenium_demo/README.md`
 - `docs/` — Tài liệu khảo sát chức năng, Test Case Draft, nội dung slide
-- `reports/` — Kết quả thực thi: screenshots, logs, báo cáo HTML,
+- `reports/` — Kết quả thực thi giai đoạn 1: screenshots, logs, báo cáo HTML,
   `TV4_STAGE1_REPORT.md`
 
 ## Chạy nhanh
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
-pip install -r automation/requirements.txt
-cd automation && pytest --headless -v
+pip install -r selenium_demo/requirements.txt
+cd selenium_demo && pytest --headless
 ```
