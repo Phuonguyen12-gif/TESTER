@@ -59,7 +59,7 @@ cp .env.example .env   # rồi sửa HEADLESS=true, TIMEOUT, BASE_URL...
 ```bash
 cd selenium_demo
 
-# Toàn bộ suite thường (8 test: TC01–TC08; TC09 là xfail demo)
+# Toàn bộ suite (9 TC: TC01–TC09 + 1 test bổ sung logout; TC09 là xfail demo)
 pytest
 
 # Chạy headless

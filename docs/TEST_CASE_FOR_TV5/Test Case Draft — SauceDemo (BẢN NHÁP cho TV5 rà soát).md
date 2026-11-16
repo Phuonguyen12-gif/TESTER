@@ -63,7 +63,7 @@
 
 ## Ghi chú cho TV5
 
-- ID TC01–TC08 khớp với tên hàm test trong `automation/tests/` để dễ đối
+- ID TC01–TC08 khớp với tên hàm test trong `selenium_demo/tests/` để dễ đối
   chiếu khi demo.
 - Cần TV5 quyết định bộ Test Case chính thức của nhóm, định dạng theo mẫu
   môn học (Test Case ID, Description, Pre-condition, Test Steps, Inputs,

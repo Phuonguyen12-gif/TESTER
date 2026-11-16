@@ -11,7 +11,7 @@
 Đã xây dựng xong một bộ kiểm thử tự động **chạy thực tế** trên
 https://www.saucedemo.com/ bằng Python + Selenium WebDriver + pytest:
 
-- Khảo sát 10 chức năng chính của website (docs/SAUCEDEMO_FEATURES.md).
+- Khảo sát 10 chức năng chính của website (selenium_demo/docs/phase_1/TTGĐ1/SAUCEDEMO_FEATURES.md).
 - Thiết lập môi trường trong virtual environment riêng của repo.
 - Cài đặt 8 test case (TC01–TC08), chạy được cả headed lẫn headless.
 - **Kết quả cuối cùng: 8/8 PASSED** sau 2 vòng sửa lỗi thực sự.
@@ -33,12 +33,12 @@ https://www.saucedemo.com/ bằng Python + Selenium WebDriver + pytest:
 | Website | https://www.saucedemo.com/ — HTTP 200, truy cập được |
 
 Hướng dẫn cài đặt + chạy chi tiết: `automation/README.md`.
-Log xác nhận môi trường: `reports/logs/pytest_run_3.log` (8 passed) và
-`reports/logs/pytest_run_headed2.log` (8 passed, headed).
+Log xác nhận môi trường: `selenium_demo/screenshots/phase_1/logs/pytest_run_3.log` (8 passed) và
+`selenium_demo/screenshots/phase_1/logs/pytest_run_headed2.log` (8 passed, headed).
 
 ## 3. Chức năng đã khảo sát (Nhiệm vụ A)
 
-Chi tiết đầy đủ ở `docs/SAUCEDEMO_FEATURES.md`. Tóm tắt:
+Chi tiết đầy đủ ở `selenium_demo/docs/phase_1/TTGĐ1/SAUCEDEMO_FEATURES.md`. Tóm tắt:
 
 Login, danh sách sản phẩm, xem chi tiết sản phẩm, thêm vào giỏ, xóa khỏi
 giỏ, kiểm tra giỏ hàng, checkout, nhập thông tin khách hàng, hoàn tất đơn,
@@ -66,10 +66,11 @@ TESTER/
 │       ├── test_login.py    # TC01, TC02, TC07
 │       ├── test_cart.py     # TC03, TC04, TC06
 │       └── test_checkout.py # TC05, TC08
-├── docs/
+├── selenium_demo/docs/phase_1/TTGĐ1/
 │   ├── SAUCEDEMO_FEATURES.md
-│   ├── TEST_CASE_DRAFT.md
 │   └── TV4_SLIDE_CONTENT.md
+├── docs/TEST_CASE_FOR_TV5/
+│   └── Test Case Draft — SauceDemo (BẢN NHÁP cho TV5 rà soát).md
 └── reports/
     ├── TV4_STAGE1_REPORT.md (file này)
     ├── screenshots/
@@ -99,7 +100,7 @@ khi FAIL qua hook `pytest_runtest_makereport`.
 
 ## 6. Kết quả thực thi thực tế (Nhiệm vụ D)
 
-### Lịch sử các lần chạy (log thật trong `reports/logs/`)
+### Lịch sử các lần chạy (log thật trong `selenium_demo/screenshots/phase_1/logs/`)
 
 | Lần chạy | Chế độ | Kết quả | Log |
 |---|---|---|---|
@@ -128,11 +129,11 @@ Chạy lại ở headed mode (`pytest -v`, Chrome mở cửa sổ thật): **8/8
 ## 7. Screenshot và log
 
 - **Ảnh demo thành công (7 ảnh, chụp thật bằng Selenium):**
-  `reports/screenshots/demo/01_login_page.png` → `07_order_complete.png`
+  `selenium_demo/screenshots/phase_1/demo/01_login_page.png` → `07_order_complete.png`
 - **Ảnh FAIL thật (tự động chụp khi test lỗi):**
-  `reports/screenshots/failed_runs/` — 6 ảnh từ các lần chạy đầu
-- **Log thực thi:** `reports/logs/pytest_run_*.log` (5 file)
-- **Báo cáo HTML:** `reports/test_results/report.html` (pytest-html)
+  `selenium_demo/screenshots/phase_1/failed_runs/` — 6 ảnh từ các lần chạy đầu
+- **Log thực thi:** `selenium_demo/screenshots/phase_1/logs/pytest_run_*.log` (5 file)
+- **Báo cáo HTML:** `selenium_demo/screenshots/phase_1/test_results/report.html` (pytest-html)
 
 ## 8. Lỗi đã gặp và cách xử lý
 
@@ -153,7 +154,7 @@ chạy lại đạt 8/8.
   Draft cho TV5).
 - Chưa tích hợp CI.
 - Behavior "checkout với giỏ trống" của website chưa rõ expected result —
-  đã đánh dấu trong TEST_CASE_DRAFT chờ TV5/nhóm thống nhất.
+  đã đánh dấu trong Test Case Draft (BẢN NHÁP) chờ TV5/nhóm thống nhất.
 
 ## 10. Hướng phát triển Giai đoạn 2
 
@@ -174,11 +175,11 @@ chạy lại đạt 8/8.
 | Environment | **PASS** | `.venv`, `automation/requirements.txt`, log `pytest_run_3.log` dòng đầu ghi platform/python/pytest |
 | Website Ready | **PASS** | SauceDemo HTTP 200; login thật thành công (`demo/02_products_page.png`) |
 | Selenium Script | **PASS** | `automation/tests/` (3 file, 8 test), `automation/conftest.py` |
-| pytest Execution | **PASS** | `reports/logs/pytest_run_3.log` (8 passed, headless), `pytest_run_headed2.log` (8 passed, headed), `reports/test_results/report.html` |
-| Screenshots | **PASS** | `reports/screenshots/demo/` (7 ảnh thành công), `reports/screenshots/failed_runs/` (6 ảnh FAIL thật) |
-| Test Case Draft | **PASS** | `docs/TEST_CASE_DRAFT.md` (nháp cho TV5, có positive+negative mỗi chức năng) |
-| Documentation | **PASS** | `automation/README.md`, `docs/SAUCEDEMO_FEATURES.md`, file này |
-| Slide Content | **PASS** | `docs/TV4_SLIDE_CONTENT.md` + ảnh `demo/` |
+| pytest Execution | **PASS** | `selenium_demo/screenshots/phase_1/logs/pytest_run_3.log` (8 passed, headless), `pytest_run_headed2.log` (8 passed, headed), `selenium_demo/screenshots/phase_1/test_results/report.html` |
+| Screenshots | **PASS** | `selenium_demo/screenshots/phase_1/demo/` (7 ảnh thành công), `selenium_demo/screenshots/phase_1/failed_runs/` (6 ảnh FAIL thật) |
+| Test Case Draft | **PASS** | `docs/TEST_CASE_FOR_TV5/Test Case Draft — SauceDemo (BẢN NHÁP cho TV5 rà soát).md` (nháp cho TV5, có positive+negative mỗi chức năng) |
+| Documentation | **PASS** | `automation/README.md`, `selenium_demo/docs/phase_1/TTGĐ1/SAUCEDEMO_FEATURES.md`, file này |
+| Slide Content | **PASS** | `selenium_demo/docs/phase_1/TTGĐ1/TV4_SLIDE_CONTENT.md` + ảnh `demo/` |
 
 **Ghi chú trung thực:** bộ test phụ thuộc website bên ngoài; SauceDemo có
 thể đổi UI/phiên bản bất cứ lúc nào. Code đã viết tương thích cả 2 phiên

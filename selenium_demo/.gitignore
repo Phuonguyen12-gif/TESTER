@@ -1,8 +1,11 @@
 # Secrets — không bao giờ commit .env thật
 .env
 
-# Artifact sinh ra khi chạy test (giữ .gitkeep)
-screenshots/**/*.png
+# Artifact sinh ra khi chạy test (ảnh fail mới ở root, demo regenerate,
+# report.html mới nhất). Evidence đã chuẩn hóa trong screenshots/phase_N/
+# thì ĐƯỢC commit.
+screenshots/*.png
+screenshots/demo/
 reports/*.html
 
 # Python cache

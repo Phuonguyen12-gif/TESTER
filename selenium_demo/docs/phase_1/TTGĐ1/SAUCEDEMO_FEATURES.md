@@ -158,5 +158,5 @@ Login (standard_user)
 
 ## Bằng chứng khảo sát
 
-- Ảnh luồng nghiệp vụ: `reports/screenshots/demo/01..07_*.png`
+- Ảnh luồng nghiệp vụ: `selenium_demo/screenshots/phase_1/demo/01..07_*.png`
 - HTML DOM đã kiểm tra bằng Selenium (class/id giữ nguyên ở cả 2 UI).

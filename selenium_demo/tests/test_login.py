@@ -1,23 +1,18 @@
 """
 test_login.py - Kiểm thử chức năng Đăng nhập.
 
-TC01: Đăng nhập hợp lệ          -> vào được trang Products
-TC02: Đăng nhập sai mật khẩu    -> hiển thị thông báo lỗi
-TC07: Đăng nhập user bị khóa    -> hiển thị thông báo lỗi tương ứng
-TC09: Intentional failure demo  -> xfail mặc định, xem README
+TC01: Đăng nhập hợp lệ            -> hiển thị trang Products
+TC02: Sai mật khẩu                -> hiển thị thông báo lỗi
+TC03: Bỏ trống username           -> "Username is required"
+TC04: Tài khoản locked_out_user   -> thông báo tài khoản bị khóa
+TC09: Intentional failure demo    -> xfail mặc định, xem README
 """
 
 import pytest
 
 from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
-from test_data.login_data import (
-    LOCKED_USER,
-    NEGATIVE_LOGIN_CASES,
-    NEGATIVE_LOGIN_IDS,
-    VALID_USER,
-    WRONG_PASSWORD_USER,
-)
+from test_data.login_data import NEGATIVE_LOGIN_CASES, NEGATIVE_LOGIN_IDS, VALID_USER
 
 
 @pytest.mark.login
@@ -42,12 +37,16 @@ class TestLogin:
             ),
             pytest.param(
                 *NEGATIVE_LOGIN_CASES[1], id=NEGATIVE_LOGIN_IDS[1],
-                marks=pytest.mark.tc07,
+                marks=pytest.mark.tc03,
+            ),
+            pytest.param(
+                *NEGATIVE_LOGIN_CASES[2], id=NEGATIVE_LOGIN_IDS[2],
+                marks=pytest.mark.tc04,
             ),
         ],
     )
-    def test_TC02_TC07_invalid_login(self, driver, user, expected_error):
-        """TC02/TC07: Đăng nhập thất bại -> hiển thị thông báo lỗi phù hợp."""
+    def test_TC02_TC04_invalid_login(self, driver, user, expected_error):
+        """TC02/TC03/TC04: Đăng nhập thất bại -> thông báo lỗi phù hợp."""
         login_page = LoginPage(driver)
         login_page.login(user["username"], user["password"])
 
@@ -58,15 +57,16 @@ class TestLogin:
     @pytest.mark.tc09
     @pytest.mark.demo_fail
     @pytest.mark.xfail(
-        reason="TC09: intentional failure demo — cố tình sai expected "
-               "result để minh họa FAIL + screenshot. "
-               "Chạy riêng: pytest -m demo_fail --runxfail"
+        reason="TC09: intentional failure demo — cố tình đặt expected "
+               "title là 'Product' thay vì 'Products' để minh họa kết quả "
+               "kiểm thử thất bại có chủ đích. "
+               "Chạy FAIL thật: pytest -m demo_fail --runxfail"
     )
     def test_TC09_intentional_failure(self, driver):
-        """TC09: Demo test cố tình FAIL (expected title sai có chủ đích)."""
+        """TC09: Demo test thất bại CÓ CHỦ ĐÍCH (không phải lỗi website)."""
         login_page = LoginPage(driver)
         login_page.login(VALID_USER["username"], VALID_USER["password"])
 
-        # CỐ TÌNH sai: title thật là "Products", không phải "Dashboard"
+        # CỐ TÌNH sai: title thực tế là "Products", expected đặt "Product"
         inventory_page = InventoryPage(driver)
-        assert inventory_page.title_text() == "Dashboard"
+        assert inventory_page.title_text() == "Product"

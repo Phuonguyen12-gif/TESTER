@@ -1,22 +1,22 @@
 """
 test_checkout.py - Kiểm thử chức năng Checkout.
 
-TC05: Checkout hợp lệ           -> hoàn tất đơn hàng thành công
-TC08: Checkout thiếu thông tin  -> hiển thị thông báo lỗi
+TC07: Checkout hợp lệ                -> "Thank you for your order!"
+TC08: Bỏ trống Postal Code           -> "Postal Code is required"
 """
 
 import pytest
 
-from test_data.checkout_data import VALID_CHECKOUT
+from test_data.checkout_data import MISSING_POSTAL_CHECKOUT, VALID_CHECKOUT
 
 BACKPACK = "sauce-labs-backpack"
 
 
 @pytest.mark.checkout
 class TestCheckout:
-    @pytest.mark.tc05
-    def test_TC05_checkout_success(self, inventory):
-        """TC05: Điền đủ thông tin -> đơn hàng hoàn tất thành công."""
+    @pytest.mark.tc07
+    def test_TC07_checkout_success(self, inventory):
+        """TC07: Điền đủ thông tin -> đơn hàng hoàn tất thành công."""
         inventory.add_to_cart(BACKPACK)
         cart = inventory.open_cart()
         checkout = cart.checkout()
@@ -33,15 +33,16 @@ class TestCheckout:
         assert checkout.is_complete()
 
     @pytest.mark.tc08
-    def test_TC08_checkout_missing_info(self, inventory):
-        """TC08: Bỏ trống thông tin bắt buộc -> hiển thị thông báo lỗi."""
+    def test_TC08_checkout_missing_postal_code(self, inventory):
+        """TC08: Bỏ trống Postal Code -> "Postal Code is required"."""
         inventory.add_to_cart(BACKPACK)
         cart = inventory.open_cart()
         checkout = cart.checkout()
 
-        # Không điền gì, nhấn Continue luôn
+        # Điền First + Last name, chỉ bỏ trống Postal Code
+        checkout.fill_info(**MISSING_POSTAL_CHECKOUT)
         checkout.continue_to_overview()
 
-        assert "Error" in checkout.error_text()
+        assert "Postal Code is required" in checkout.error_text()
         # Vẫn ở lại bước nhập thông tin, chưa hoàn tất đơn
         assert "checkout-step-one" in inventory.driver.current_url

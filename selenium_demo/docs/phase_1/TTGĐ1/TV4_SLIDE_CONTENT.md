@@ -1,8 +1,8 @@
 # Nội dung slide phần TV4 — Thực thi kiểm thử, Demo & Kết quả (BẢN NHÁP)
 
 > Nội dung nháp để TV1 tổng hợp vào PowerPoint/Canva chung.
-> Ảnh minh họa thật nằm trong `reports/screenshots/demo/` và
-> `reports/screenshots/`.
+> Ảnh minh họa thật nằm trong `selenium_demo/screenshots/phase_1/demo/` và
+> `selenium_demo/screenshots/phase_1/failed_runs/`.
 
 ---
 
@@ -20,7 +20,7 @@
   Selenium Manager
 - Hệ điều hành: macOS (Apple Silicon)
 
-**Hình gợi ý:** `reports/screenshots/demo/01_login_page.png` (trang login
+**Hình gợi ý:** `selenium_demo/screenshots/phase_1/demo/01_login_page.png` (trang login
 SauceDemo hiển thị sẵn danh sách tài khoản test).
 
 ---
@@ -86,8 +86,8 @@ def test_TC01_valid_login(self, driver):
 | TC08 | Checkout thiếu thông tin | PASS |
 
 **Tổng kết:** 8/8 test PASSED — chạy được cả headed (có cửa sổ) lẫn
-headless. Log: `reports/logs/pytest_run_3.log`, báo cáo HTML:
-`reports/test_results/report.html`.
+headless. Log: `selenium_demo/screenshots/phase_1/logs/pytest_run_3.log`, báo cáo HTML:
+`selenium_demo/screenshots/phase_1/test_results/report.html`.
 
 **Nhận xét/hạn chế để nói trên slide:**
 
@@ -95,7 +95,7 @@ headless. Log: `reports/logs/pytest_run_3.log`, báo cáo HTML:
   ổn định của locator và cơ chế chờ.
 - Ở lần chạy đầu có 6 test FAIL do lỗi timing/locator -> đã phân tích,
   sửa bằng explicit wait + JS interaction, chạy lại đạt 8/8.
-  (Ảnh fail thật lưu ở `reports/screenshots/failed_runs/` — có thể dùng
+  (Ảnh fail thật lưu ở `selenium_demo/screenshots/phase_1/failed_runs/` — có thể dùng
   để minh họa "test FAIL -> debug -> PASS".)
 - Hạn chế: chưa test `problem_user`/`performance_glitch_user`, chưa đo
   hiệu năng, chưa chạy trên CI.
